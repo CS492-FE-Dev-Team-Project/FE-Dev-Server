@@ -1,1 +1,3 @@
-console.log('Hello World');
+import Server from './server';
+
+Server.start();
