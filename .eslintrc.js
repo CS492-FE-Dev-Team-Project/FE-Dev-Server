@@ -1,19 +1,16 @@
 // .eslintrc.js
 module.exports = {
   env: {
-    browser: true,
+    node: true,
     es6: true
   },
-  extends: ['eslint:recommended', 'airbnb-base', 'plugin:prettier/recommended'],
+  extends: ['airbnb-base', 'eslint:recommended', 'plugin:prettier/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    },
     ecmaVersion: 2018,
     sourceType: 'module'
   },
@@ -22,6 +19,20 @@ module.exports = {
     'prettier/prettier': 'error',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    'import/extensions': ['off'],
+    'import/no-unresolved': 'error'
+  },
+  settings: {
+    'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
+    'import/resolver': {
+      // 아래부터는 자기 코드의 상황에 맞는 설정을 골라서 추가하면 된다.
+      // 1. use <root>/tsconfig.json
+      typescript: {
+        alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
+      }
+      // 2. use <root>/path/to/folder/tsconfig.json
+      // typescript: { directory: './' }
+    }
   }
 };
