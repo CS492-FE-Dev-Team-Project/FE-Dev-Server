@@ -26,13 +26,9 @@ module.exports = {
   settings: {
     'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
     'import/resolver': {
-      // 아래부터는 자기 코드의 상황에 맞는 설정을 골라서 추가하면 된다.
-      // 1. use <root>/tsconfig.json
       typescript: {
-        alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
+        alwaysTryTypes: true
       }
-      // 2. use <root>/path/to/folder/tsconfig.json
-      // typescript: { directory: './' }
     }
   }
 };

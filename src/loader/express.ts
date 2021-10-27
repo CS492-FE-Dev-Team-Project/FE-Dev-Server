@@ -1,8 +1,8 @@
-import path from 'path';
 import { Express } from 'express';
+import serverRoute from '../routes';
 
 export default (app: Express) => {
-  app.get('/', (req: any, res: any) => {
-    res.sendFile(`${path.dirname(__dirname)}/index.html`);
-  });
+  // TODO: Add Express middlewares
+
+  app.use('/api', serverRoute);
 };

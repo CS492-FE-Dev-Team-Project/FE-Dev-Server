@@ -1,9 +1,5 @@
-import { Server } from 'http';
-import { Express } from 'express';
-import express from './express';
-import socket from './socket';
+import ormLoader from './orm';
+import expressLoader from './express';
+import ioLoader from './io';
 
-export default ({ server, app }: { server: Server; app: Express }): void => {
-  express(app);
-  socket(server);
-};
+export { expressLoader, ioLoader, ormLoader };
